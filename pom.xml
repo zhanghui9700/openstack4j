@@ -52,8 +52,9 @@
         <module>core</module>
         <module>core-test</module>
         <module>connectors</module>
-        <module>core-integration-test</module>
+        <!--module>core-integration-test</module-->
         <module>distribution</module>
+        <module>example</module>
     </modules>
     <dependencies>
         <dependency>
