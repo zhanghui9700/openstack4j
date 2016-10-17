@@ -8,6 +8,7 @@ import org.openstack4j.api.compute.ComputeImageService;
 import org.openstack4j.api.compute.ComputeSecurityGroupService;
 import org.openstack4j.api.compute.ComputeService;
 import org.openstack4j.api.compute.FlavorService;
+import org.openstack4j.api.compute.HostService;
 import org.openstack4j.api.compute.HostAggregateService;
 import org.openstack4j.api.compute.KeypairService;
 import org.openstack4j.api.compute.QuotaSetService;
@@ -130,5 +131,7 @@ public class ComputeServiceImpl extends BaseComputeServices implements ComputeSe
 		
 		return Apis.get(HostAggregateService.class);
 	}
-    
+
+	@Override
+	public HostService hosts(){ return Apis.get(HostService.class); }
 }

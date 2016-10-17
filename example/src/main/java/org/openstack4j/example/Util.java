@@ -6,9 +6,9 @@ import org.openstack4j.openstack.OSFactory;
 
 public class Util {
 
-    private static String AUTH_URL = "http://14.14.14.221:5000/v2.0";
+    private static String AUTH_URL = "http://172.16.173.78:5000/v2.0";
     private static String OS_USER = "admin";
-    private static String OS_PASSWORD = "admin";
+    private static String OS_PASSWORD = "password";
     private static String OS_TENANT_NAME = "admin";
     private static OSClientV2 CLIENT = null;
     private static OSClientV2 ADMIN_CLIENT = null;

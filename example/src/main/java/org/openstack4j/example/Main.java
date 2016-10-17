@@ -5,7 +5,7 @@ public class Main {
     public static void main( String[] args ){
         System.out.println("Hello World!!!!!");
 
-        tenantDemo();
+        //tenantDemo();
 
         //networkDemo();
 
@@ -17,9 +17,18 @@ public class Main {
 
         //flavorDemo();
 
+        hostDemo();
+
 
         System.out.println("demo done.....");
 
+    }
+
+
+    private static void hostDemo()
+    {
+        HostDemo hostDemo = new HostDemo();
+        hostDemo.listHost();
     }
 
 

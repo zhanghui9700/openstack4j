@@ -108,4 +108,6 @@ public interface ComputeService extends RestService {
 	 * Host Aggregates Management Service
 	 */
 	HostAggregateService hostAggregates();
+
+	HostService hosts();
 }
