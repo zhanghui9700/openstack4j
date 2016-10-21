@@ -8,64 +8,84 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.openstack4j.openstack.common.ListResult;
 import org.openstack4j.model.compute.Host;
-import org.openstack4j.model.compute.Host.Service;
 import com.google.common.base.Objects;
 
-@JsonRootName("host")
-@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonRootName("service")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class NovaHost implements Host {
     private static final long serialVersionUID = 1L;
 
-	@JsonProperty("host_name")
+    @JsonProperty("host")
     private String hostname;
-	private String service;
-	@JsonProperty("zone")
-	private String zone;
 
-	@Override
-	public String getHostName() {
-		return hostname;
-	}
+    @JsonProperty("binary")
+    private String service;
 
-	@Override
-	public String getService() {
-		return service;
-	}
+    @JsonProperty("zone")
+    private String zone;
 
-	@Override
-	public String getAvaiablityZone() {
-		return zone;
-	}
+    @JsonProperty("status")
+    private String status;
 
-	@Override
-	public String toString() {
-		return Objects.toStringHelper(this).omitNullValues()
-						.add("hostname", hostname)
-						.add("service", service)
-						.add("avaiablityZone", zone)
-						.toString();
-	}
+    @JsonProperty("state")
+    private String state;
 
-	public static class Hosts extends ListResult<NovaHost> {
+    @Override
+    public String getHostName() {
+        return hostname;
+    }
 
-		private static final long serialVersionUID = 1L;
+    @Override
+    public String getService() {
+        return service;
+    }
 
-		@JsonProperty("hosts")
-		List<NovaHost> hosts;
+    @Override
+    public String getAvaiablityZone() {
+        return zone;
+    }
 
-		@Override
+    @Override
+    public String getStatus() {
+        return status;
+    }
+
+    @Override
+    public String getState() {
+        return state;
+    }
+
+    @Override
+    public String toString() {
+        return Objects.toStringHelper(this).omitNullValues()
+                .add("hostname", hostname)
+                .add("service", service)
+                .add("avaiablityZone", zone)
+                .add("status", status)
+                .add("state", state)
+                .toString();
+    }
+
+    public static class Hosts extends ListResult<NovaHost> {
+
+        private static final long serialVersionUID = 1L;
+
+        @JsonProperty("services")
+        List<NovaHost> hosts;
+
+        @Override
         public List<NovaHost> value() {
-			return hosts;
-		}
-	}
+            return hosts;
+        }
+    }
 
-	@JsonRootName("service")
-    public static class  HostService implements Service {
+    @JsonRootName("service")
+    public static class HostService implements Service {
 
         private static final long serialVersionUID = 1L;
         private String host;
         private String binary;
-		private String status;
+        private String status;
 
         @Override
         public String getHost() {
@@ -77,7 +97,7 @@ public class NovaHost implements Host {
             return binary;
         }
 
-		@Override
+        @Override
         public String getStatus() {
             return status;
         }
@@ -85,10 +105,10 @@ public class NovaHost implements Host {
         @Override
         public String toString() {
             return Objects.toStringHelper(this).omitNullValues()
-					.add("host", host)
-					.add("binary", binary)
-					.add("status", status)
-					.toString();
+                    .add("host", host)
+                    .add("binary", binary)
+                    .add("status", status)
+                    .toString();
         }
     }
 }

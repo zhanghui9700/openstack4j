@@ -13,6 +13,51 @@ import java.util.Map;
 
 public class ServerDemo {
 
+    public  void listServer(){
+        OSClient os = Util.getClient();
+        List<? extends Server> servers = os.compute().servers().list();
+        for(Server server: servers){
+            System.out.println("get server is: " + server);
+        }
+    }
+
+    public  void listServerByHost(final String hostName){
+        OSClient os = Util.getClient();
+        Map<String, String> filter = new HashMap<String,String>();
+        filter.put("host", hostName);
+
+        List<? extends Server> servers = os.compute().servers().list(filter);
+        for(Server server: servers){
+            /**
+            * NovaServer{
+            * id=14dd73b3-d7cb-4f1d-ad12-941b1cfcd3d0,
+            * name=first-vm-3,
+            * image={id=6efe873b-1bb9-41c1-a9a5-dc0ebe0a9ef0, links=[{href=http://172.16.173.78:8774/93098ed3a5d14632839c57197b675ac8/images/6efe873b-1bb9-41c1-a9a5-dc0ebe0a9ef0, rel=bookmark}]},
+            * flavor=NovaFlavor{id=456f6915-5d93-42a5-b3dd-b09b757634cf, ephemeral=0, swap=0, rxtx_factor=1.0, links=[GenericLink{href=http://172.16.173.78:8774/93098ed3a5d14632839c57197b675ac8/flavors/456f6915-5d93-42a5-b3dd-b09b757634cf, rel=bookmark}],},
+            * status=ACTIVE,
+            * diskconfig=AUTO,
+            * userId=6f4bc837ceab49f99b819e134224e7a4,
+            * created=Fri Oct 21 10:54:50 CST 2016,
+            * updated=Fri Oct 21 10:55:32 CST 2016,
+            * launched at=Fri Oct 21 10:55:30 CST 2016,
+            * tenantId=93098ed3a5d14632839c57197b675ac8,
+            * hostId=2d4b5e0ca4d4678dc5d0655ecd2b222392d7a3ee867a1a23465bb3dc,
+            * addresses=NovaAddresses{
+            *               addresses={
+            *                   net04=[
+            *                       NovaAddress{address=10.10.0.3, type=fixed, version=4, macaddr=fa:16:3e:6d:33:ca, }
+            *                   ]
+            *               },},
+            * hypervisor host=mitaka.fx-dev.com,
+            * powerstate=1,
+            * instanceName=instance-00000003,
+            * vmState=active,
+            * metadata={}}
+            * */
+            System.out.println("get server is: " + server);
+        }
+    }
+
     public void createServer(){
         OSClient os = Util.getClient("network-test", "password", "api-test-1425885645787");
         List<String> networks = new ArrayList<String>(){

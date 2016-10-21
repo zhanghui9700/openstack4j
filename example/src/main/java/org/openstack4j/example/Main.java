@@ -3,7 +3,7 @@ package org.openstack4j.example;
 
 public class Main {
     public static void main( String[] args ){
-        System.out.println("Hello World!!!!!");
+        System.out.println("demo start!!!!!");
 
         //tenantDemo();
 
@@ -17,18 +17,30 @@ public class Main {
 
         //flavorDemo();
 
-        hostDemo();
+        //hostDemo();
+
+        monitorDemo();
 
 
-        System.out.println("demo done.....");
+        System.out.println("demo end!!!!!");
 
     }
 
+    private static void monitorDemo(){
+        MonitorDemo monitor = new MonitorDemo();
+        String instanceId = "f2b181aa-ad91-45d5-a651-43381e776d4d"; // 云主机UUID
+        // CPU使用率
+        //monitor.getCPU(instanceId);
+        // 内存使用量
+        monitor.getMemoryUsage(instanceId);
+    }
 
     private static void hostDemo()
     {
         HostDemo hostDemo = new HostDemo();
         hostDemo.listHost();
+        hostDemo.listHypervisor();
+        hostDemo.computeDisableEnable();
     }
 
 
@@ -50,7 +62,9 @@ public class Main {
     {
         ServerDemo serverDemo = new ServerDemo();
         //serverDemo.createServer();
-        serverDemo.createServerWithNewFlavor();
+        //serverDemo.createServerWithNewFlavor();
+        //serverDemo.listServer();
+        serverDemo.listServerByHost("mitaka");
     }
 
     private static void securigyGroupDemo(){

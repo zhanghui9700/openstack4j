@@ -10,15 +10,18 @@ public interface Host extends ModelEntity {
 
     String getService();
 
+    String getStatus();
+
+    String getState();
+
 
     public interface Service extends ModelEntity {
-
 
 		String getHost();
 
 		String getBinary();
 
         String getStatus();
-	}
+    }
 
 }

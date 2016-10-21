@@ -13,7 +13,7 @@ public class HostServiceImpl extends BaseComputeServices implements HostService 
 
 	@Override
 	public List<? extends Host> list() {
-		return get(Hosts.class, uri("/os-hosts"))
+		return get(Hosts.class, uri("/os-services"))
 				.execute().getList();
 	}
 
