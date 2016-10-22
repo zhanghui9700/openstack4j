@@ -32,11 +32,13 @@ public class HostDemo {
         String hostname = "node-4.suninfo.com";
         System.out.println("HostDemo.computeDisableEnable start.");
         OSClient os = Util.getAdminClient();
+        // 停止服务成功后返回的server.getStatus == "disabled"
         Host.Service service = os.compute().hosts()
                 .serviceDisable(hostname, "nova-compute");
 
         System.out.println("disable service: " + service);
 
+        // 启动服务成功后返回的server.getStatus == "enabled"
         Host.Service enable_service = os.compute().hosts()
                 .serviceEnable(hostname, "nova-compute");
 

@@ -29,10 +29,23 @@ public class Main {
     private static void monitorDemo(){
         MonitorDemo monitor = new MonitorDemo();
         String instanceId = "f2b181aa-ad91-45d5-a651-43381e776d4d"; // 云主机UUID
+
         // CPU使用率
         //monitor.getCPU(instanceId);
+
         // 内存使用量
-        monitor.getMemoryUsage(instanceId);
+        // monitor.getMemoryUsage(instanceId);
+
+        // 网卡0,入口流量
+        monitor.getNetworkMonitor(instanceId, "network.incoming.bytes.rate");
+        // 网卡0,出口流量
+        monitor.getNetworkMonitor(instanceId, "network.outgoing.bytes.rate");
+
+        // 磁盘, 读速率
+        monitor.getDiskMonitor(instanceId, "disk.read.bytes.rate");
+        // 磁盘, 写速率
+        monitor.getDiskMonitor(instanceId, "disk.write.bytes.rate");
+
     }
 
     private static void hostDemo()

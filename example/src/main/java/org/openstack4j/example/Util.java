@@ -1,5 +1,8 @@
 package org.openstack4j.example;
 
+import java.util.Date;
+import java.util.Calendar;
+
 import org.openstack4j.api.OSClient.OSClientV2;
 import org.openstack4j.api.types.Facing;
 import org.openstack4j.openstack.OSFactory;
@@ -51,5 +54,14 @@ public class Util {
         }
 
         return CLIENT;
+    }
+
+    public  static Date beforeHour(int hour){
+        Date now = new Date();
+        Calendar rightNow = Calendar.getInstance();
+        rightNow.setTime(now);
+        rightNow.add(Calendar.HOUR, -1 * hour);
+        Date beforeHour = rightNow.getTime();
+        return beforeHour;
     }
 }
