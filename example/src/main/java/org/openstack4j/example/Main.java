@@ -5,25 +5,51 @@ public class Main {
     public static void main( String[] args ){
         System.out.println("demo start!!!!!");
 
-        //tenantDemo();
+        // 租户管理
+        // tenantDemo();
 
-        //networkDemo();
+        // 网络管理
+        // networkDemo();
 
-        //securigyGroupDemo();
+        // 安全组管理
+        // securigyGroupDemo();
 
-        //floatingDemo();
+        // 云主机管理
+        // serverDemo();
 
-        //serverDemo();
+        // 规格管理
+        // flavorDemo();
 
-        //flavorDemo();
+        // 物理机管理
+        // hostDemo();
 
-        //hostDemo();
+        // 监控指标
+        // monitorDemo();
 
-        monitorDemo();
-
+        // 云硬盘创建/删除/list/get
+        volumeDemo();
 
         System.out.println("demo end!!!!!");
 
+    }
+
+    private  static void  volumeDemo(){
+        VolumeDemo volumeDemo = new VolumeDemo();
+        volumeDemo.listVolume();
+
+        // String volumeID = volumeDemo.createVolume();
+        //volumeDemo.getVolume(volumeID);
+        //volumeDemo.deleteVolume(volumeID);
+
+        //volumeDemo.deleteVolume("d5679fb4-c824-40c6-8c83-97adb00ed7e6");
+
+        //volumeDemo.listVolume();
+
+
+        String instanceID = "6f3facb6-2e28-45b6-b3ae-a425b0611597";
+        String volumeID = "5f007f55-e64b-4bd7-8859-b9ad49df6c4a";
+        //volumeDemo.volumeAttach(instanceID, volumeID);
+        volumeDemo.volumeDetach(instanceID, volumeID);
     }
 
     private static void monitorDemo(){
@@ -67,8 +93,8 @@ public class Main {
 
     private static void networkDemo(){
         NetworkDemo networkDemo = new NetworkDemo();
-        //networkDemo.createNetwork("a56b14277c1442ba93962eb70f6c45d8");
-        networkDemo.routerUpdate();
+        networkDemo.createNetwork("50a03bd3a88e487dbdf3a8fdc98c9c5e");
+        //networkDemo.routerUpdate();
     }
 
     private static void serverDemo()

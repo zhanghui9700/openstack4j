@@ -33,6 +33,7 @@ public class NetworkDemo {
 
         System.out.println("created tenant subnet is:" + subnet);
 
+        /**
         Router router = os.networking()
                         .router()
                         .create(Builders.router()
@@ -50,7 +51,7 @@ public class NetworkDemo {
 
 
         System.out.println("created tenant iface is:" + iface);
-
+        */
     }
 
     public void routerUpdate(){
