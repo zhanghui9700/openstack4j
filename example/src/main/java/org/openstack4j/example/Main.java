@@ -27,7 +27,9 @@ public class Main {
         // monitorDemo();
 
         // 云硬盘创建/删除/list/get
-        volumeDemo();
+        // volumeDemo();
+
+        backupDemo();
 
         System.out.println("demo end!!!!!");
 
@@ -93,7 +95,7 @@ public class Main {
 
     private static void networkDemo(){
         NetworkDemo networkDemo = new NetworkDemo();
-        networkDemo.createNetwork("50a03bd3a88e487dbdf3a8fdc98c9c5e");
+        networkDemo.createNetwork(Util.getTenantID());
         //networkDemo.routerUpdate();
     }
 
@@ -102,8 +104,9 @@ public class Main {
         ServerDemo serverDemo = new ServerDemo();
         //serverDemo.createServer();
         //serverDemo.createServerWithNewFlavor();
-        //serverDemo.listServer();
-        serverDemo.listServerByHost("mitaka");
+        serverDemo.bootFromVolume();
+        serverDemo.listServer();
+        //serverDemo.listServerByHost("mitaka");
     }
 
     private static void securigyGroupDemo(){
@@ -117,5 +120,10 @@ public class Main {
         //flavorDemo.listFlavor();
         flavorDemo.createFlavorNormal();
         //flavorDemo.createFlavorWithExtra();
+    }
+
+    private static void backupDemo(){
+        BackupDemo backupDemo = new BackupDemo();
+        backupDemo.run();
     }
 }

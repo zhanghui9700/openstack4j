@@ -5,6 +5,7 @@ import org.openstack4j.api.storage.BlockQuotaSetService;
 import org.openstack4j.api.storage.BlockStorageService;
 import org.openstack4j.api.storage.BlockVolumeService;
 import org.openstack4j.api.storage.BlockVolumeSnapshotService;
+import org.openstack4j.api.storage.BlockVolumeBackupService;
 import org.openstack4j.api.storage.CinderZoneService;
 import org.openstack4j.model.storage.block.BlockLimits;
 import org.openstack4j.openstack.storage.block.domain.CinderBlockLimits;
@@ -30,6 +31,14 @@ public class BlockStorageServiceImpl extends BaseBlockStorageServices implements
 	@Override
 	public BlockVolumeSnapshotService snapshots() {
 		return Apis.get(BlockVolumeSnapshotService.class);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public BlockVolumeBackupService backups() {
+		return Apis.get(BlockVolumeBackupService.class);
 	}
 
 	/**

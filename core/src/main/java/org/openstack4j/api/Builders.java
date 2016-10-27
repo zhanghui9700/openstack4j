@@ -29,10 +29,7 @@ import org.openstack4j.model.manila.builder.*;
 import org.openstack4j.model.network.builder.*;
 import org.openstack4j.model.network.ext.builder.*;
 import org.openstack4j.model.sahara.builder.*;
-import org.openstack4j.model.storage.block.builder.BlockQuotaSetBuilder;
-import org.openstack4j.model.storage.block.builder.StorageBuilders;
-import org.openstack4j.model.storage.block.builder.VolumeBuilder;
-import org.openstack4j.model.storage.block.builder.VolumeSnapshotBuilder;
+import org.openstack4j.model.storage.block.builder.*;
 import org.openstack4j.model.telemetry.builder.AlarmBuilder;
 import org.openstack4j.model.telemetry.builder.TelemetryBuilders;
 import org.openstack4j.openstack.common.GenericLink;
@@ -74,6 +71,7 @@ import org.openstack4j.openstack.sahara.domain.*;
 import org.openstack4j.openstack.storage.block.builder.CinderBuilders;
 import org.openstack4j.openstack.storage.block.domain.CinderBlockQuotaSet;
 import org.openstack4j.openstack.storage.block.domain.CinderVolume;
+import org.openstack4j.openstack.storage.block.domain.CinderVolumeBackup;
 import org.openstack4j.openstack.storage.block.domain.CinderVolumeSnapshot;
 import org.openstack4j.openstack.telemetry.builder.CeilometerBuilders;
 import org.openstack4j.openstack.telemetry.domain.CeilometerAlarm;
@@ -181,6 +179,10 @@ public class Builders {
      */
     public static VolumeSnapshotBuilder volumeSnapshot() {
         return CinderVolumeSnapshot.builder();
+    }
+
+    public static VolumeBackupBuilder volumeBackup(){
+        return CinderVolumeBackup.builder();
     }
 
     /**

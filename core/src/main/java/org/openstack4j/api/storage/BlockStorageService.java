@@ -19,7 +19,10 @@ public interface BlockStorageService extends RestService {
 	 * @return the Volume Snapshot Service API
 	 */
 	BlockVolumeSnapshotService snapshots();
-	
+
+
+	BlockVolumeBackupService backups();
+
 	CinderZoneService zones();
 	
 	/**
