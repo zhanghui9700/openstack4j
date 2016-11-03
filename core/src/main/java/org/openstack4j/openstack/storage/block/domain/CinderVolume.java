@@ -84,6 +84,13 @@ public class CinderVolume implements Volume {
 		return id;
 	}
 
+	@Override
+	public Boolean getBootable() {
+		return bootable;
+	}
+
+
+
 	/**
 	 * {@inheritDoc}
 	 */

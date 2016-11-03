@@ -7,6 +7,7 @@ import org.openstack4j.model.storage.block.VolumeBackup;
 
 import org.openstack4j.openstack.storage.block.domain.CinderVolumeBackup;
 import org.openstack4j.openstack.storage.block.domain.CinderVolumeBackup.VolumeBackups;
+import org.openstack4j.openstack.storage.block.domain.RestoreBackupAction;
 
 //import org.openstack4j.openstack.storage.block.domain.CinderVolumeSnapshot;
 //import org.openstack4j.openstack.storage.block.domain.CinderVolumeSnapshot.VolumeSnapshots;
@@ -51,5 +52,15 @@ public class BlockVolumeBackupServiceImpl extends BaseBlockStorageServices imple
 		checkNotNull(backup);
 		checkNotNull(backup.getVolumeId());
 		return post(CinderVolumeBackup.class, uri("/backups")).entity(backup).execute();
+	}
+
+	@Override
+	public ActionResponse restore(String backupId, String volumeId) {
+		checkNotNull(backupId);
+		checkNotNull(volumeId);
+
+		return post(ActionResponse.class, uri("/backups/%s/restore", backupId))
+				.entity(new RestoreBackupAction(volumeId))
+				.execute();
 	}
 }

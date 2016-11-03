@@ -81,6 +81,9 @@ public interface Volume extends ModelEntity, Buildable<VolumeBuilder> {
 	 */
 	String getId();
 
+
+	Boolean getBootable();
+
 	/**
 	 * @return the name of the volume
 	 */

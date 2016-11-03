@@ -54,5 +54,8 @@ public interface BlockVolumeBackupService extends RestService {
 	 * @return the newly created backup
 	 */
 	VolumeBackup create(VolumeBackup backup);
-	
+
+
+	ActionResponse restore(String backupId, String volumeId);
+
 }

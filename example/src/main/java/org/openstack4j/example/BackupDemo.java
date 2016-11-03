@@ -7,6 +7,8 @@ import org.openstack4j.api.Builders;
 import org.openstack4j.api.OSClient;
 import org.openstack4j.model.common.ActionResponse;
 import org.openstack4j.model.storage.block.VolumeBackup;
+import org.openstack4j.model.storage.block.builder.VolumeBackupBuilder;
+import org.openstack4j.openstack.heat.domain.HeatSoftwareConfig;
 
 public class BackupDemo {
 
@@ -60,7 +62,7 @@ public class BackupDemo {
     }
 
 
-    public  VolumeBackup create(String volumeId){
+    public VolumeBackup create(String volumeId){
         System.out.println("BackupDemo.create start...");
         OSClient os = Util.getClient();
 
@@ -77,10 +79,25 @@ public class BackupDemo {
          *      id=3876b24c-1dd8-4130-a346-0590096b2c6a,
          *      name=api-backup-test-45948040-7df6-476e-b984-6fb6e9ed50ab,
          *      objectCount=0}
-         * */
+          */
         System.out.println("BackupDemo.create end...create backup: " + backup);
 
         return backup;
+    }
+
+
+
+    public void resotre(String backupId, String volumeId){
+        System.out.println("BackupDemo.restore start...backupID=" + backupId);
+        OSClient os = Util.getClient();
+        ActionResponse response = os.blockStorage().backups().restore(backupId, volumeId);
+        /**
+         * ActionResponse{success=true, code=200}
+         * ActionResponse{success=false, fault=Backup 45948040-7df6-476e-b984-6fb6e9ed50ab could not be found., code=404}
+         * */
+        System.out.println("restore action return: " + response);
+
+        System.out.println("BackupDemo.restore end...");
     }
 
 
@@ -97,6 +114,7 @@ public class BackupDemo {
         */
 
         System.out.println(Util.getSpliter());
+        /*
         VolumeBackup backup = this.create("45948040-7df6-476e-b984-6fb6e9ed50ab");
 
         int i = 0;
@@ -125,6 +143,9 @@ public class BackupDemo {
                 break;
             }
         }
+        */
+
+        this.resotre("26af1a20-f056-4f97-af94-24c3ad50b968", "45948040-7df6-476e-b984-6fb6e9ed50ab");
 
         System.out.println(Util.getSpliter());
     }
