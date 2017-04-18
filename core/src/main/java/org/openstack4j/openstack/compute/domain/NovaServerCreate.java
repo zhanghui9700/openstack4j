@@ -1,6 +1,7 @@
 package org.openstack4j.openstack.compute.domain;
 
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -255,6 +256,18 @@ public class NovaServerCreate implements ServerCreate {
             if (idList != null) {
                 for (String id : idList) {
                     m.addNetwork(id, null);
+                }
+            }
+            return this;
+        }
+
+        @Override
+        public ServerCreateConcreteBuilder networks(Map<String, String> fixedIPs) {
+            if (fixedIPs != null) {
+                Iterator it = fixedIPs.entrySet().iterator();
+                while(it.hasNext()){
+                    Map.Entry<String, String> next = (Map.Entry<String, String>)it.next();
+                    m.addNetwork(next.getKey(), next.getValue());
                 }
             }
             return this;

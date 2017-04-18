@@ -15,7 +15,7 @@ public class Main {
         // securigyGroupDemo();
 
         // 云主机管理
-        // serverDemo();
+        serverDemo();
 
         // 规格管理
         // flavorDemo();
@@ -29,7 +29,7 @@ public class Main {
         // 云硬盘创建/删除/list/get
         // volumeDemo();
 
-        backupDemo();
+        // backupDemo();
 
         System.out.println("demo end!!!!!");
 
@@ -104,9 +104,10 @@ public class Main {
         ServerDemo serverDemo = new ServerDemo();
         //serverDemo.createServer();
         //serverDemo.createServerWithNewFlavor();
-        serverDemo.bootFromVolume();
-        serverDemo.listServer();
+        //serverDemo.bootFromVolume();
+        //serverDemo.listServer();
         //serverDemo.listServerByHost("mitaka");
+        serverDemo.createServerWithFixed();
     }
 
     private static void securigyGroupDemo(){

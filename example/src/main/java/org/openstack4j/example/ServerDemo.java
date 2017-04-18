@@ -162,4 +162,22 @@ public class ServerDemo {
         tenantOS.compute().flavors().delete(flavor.getId());
     }
 
+
+    public void createServerWithFixed(){
+        OSClient os = Util.getClient();
+        Map<String, String> networks = new HashMap<String, String>();
+        networks.put("63fc5376-e861-4874-8e82-89593a6f0b06", "192.168.111.100");
+
+        ServerCreate sc = Builders.server()
+                .name("api-test-vm" + System.currentTimeMillis())
+                .flavor("65b55b20-13ec-45a5-8004-280298f66433")
+                .image("fb13b723-6f03-4051-90de-1cedaacfeb2e")
+                .networks(networks)
+                .build();
+
+        Server server = os.compute().servers().boot(sc);
+
+        System.out.println("created server is:" + server);
+    }
+
 }

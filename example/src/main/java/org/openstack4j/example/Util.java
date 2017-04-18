@@ -18,7 +18,7 @@ import org.openstack4j.openstack.OSFactory;
 
 public class Util {
 
-    private static String AUTH_URL = "http://192.168.32.6:5000/v2.0";
+    private static String AUTH_URL = "http://192.168.10.3:5000/v2.0";
     private static String OS_PASSWORD = "admin";
 
     /*

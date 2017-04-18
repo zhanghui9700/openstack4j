@@ -49,6 +49,8 @@ public interface ServerCreateBuilder extends Buildable.Builder<ServerCreateBuild
      */
     ServerCreateBuilder networks(List<String> networks);
 
+    ServerCreateBuilder networks(Map<String, String> networks);
+
     /**
      * Adds a network port
      *
